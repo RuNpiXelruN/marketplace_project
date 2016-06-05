@@ -1,0 +1,15 @@
+<h1>Profile of <%= current_user.username %></h1>
+<div>
+  <p><%= current_user.first_name %></p>
+  <p><%= current_user.last_name %></p>
+
+  <% if current_user.bio.empty? %>
+    <p>Don't forget to complete your bio!</p>
+    <%= form_for [current_user, @user] do |f| %>
+      <%= f.text_area :bio %>
+      <%= f.submit "Save!" %>
+    <% end %>
+  <% else %>
+    <p><%= current_user.bio %></p>
+  <% end %>
+</div>

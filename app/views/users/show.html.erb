@@ -1,0 +1,18 @@
+<h1>Profile of <%= @user.username %></h1>
+<div>
+  <p><%= @user.first_name %></p>
+  <p><%= @user.last_name %></p>
+
+  <% if @user.bio.empty? %>
+    <p>Don't forget to complete your bio!</p>
+    <%= form_for @user do |f| %>
+      <%= f.text_area :bio %>
+      <%= f.submit "Save!" %>
+    <% end %>
+  <% else %>
+    <p><%= @user.bio %></p>
+  <% end %>
+  <% if @user = current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(@user) %>
+  <% end %>
+</div>
